@@ -79,6 +79,20 @@ contract MasterChaf is Ownable {
             })
         );
     }
+
+    function set(uint _pid, uint _allocPoint, bool _withUpdate) {
+        if (_withUpdate) {massUpdatePools();}
+        totalAllocPoint = totalAllocPoint.sub(poolInfo[_pid].allocPoint).add(_allocPoint);
+        poolInfo[_pid].allocPoint = _allocPoint;
+    }
+
+    function setMigrator(IMigratorChef _migrator) public OnlyOwner {
+        migrator = _migrator;
+    }
+
+    function migrate()
+
+
     
 
 
